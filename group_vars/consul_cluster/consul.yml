@@ -1,0 +1,8 @@
+---
+consul_acl_master_token: 7A993C85-1EA6-412D-85DB-DA14EFCD03AB
+consul_bind_interface: "{{ ansible_pri_interface }}"
+consul_client_address: "{{ consul_bind_address }} 127.0.0.1"
+consul_encryption_key: OJVXXkKdwifyqc9BrDe1VQ==
+consul_servers_group: consul_cluster
+consul_ui: true
+consul_version: 1.0.6

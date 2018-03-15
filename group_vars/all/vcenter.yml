@@ -1,0 +1,4 @@
+---
+vcenter_cluster: LAB-Cluster
+vcenter_datacenter: LAB
+vcenter_host: 10.0.102.60
