@@ -1,3 +1,5 @@
+{{ ansible_managed|comment }}
+
 {% set _groups = [] %}
 {% for vm in vms %}
 {%   if vm['groups'] is defined %}

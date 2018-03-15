@@ -1,6 +1,11 @@
 ---
+# Defines the vSphere Virtual PortGroup that the VMs should be configured on.
+vm_network: VSS-VLAN-102
+
+# Defines the vSphere template to use for spinning up VMs
 vm_template: ubuntu1604-packer-template
 
+# Defines the VMs which to build
 vms:
   - name: consul-1
     # customization:
@@ -10,7 +15,7 @@ vms:
       - ansible_provisioned
       - consul_cluster
     networks:
-      - name: VSS-VLAN-102
+      - name: "{{ vm_network }}"
         type: dhcp
         device_type: vmxnet3
         # ip:
@@ -28,7 +33,7 @@ vms:
       - ansible_provisioned
       - consul_cluster
     networks:
-      - name: VSS-VLAN-102
+      - name: "{{ vm_network }}"
         type: dhcp
         device_type: vmxnet3
         # ip:
@@ -46,7 +51,7 @@ vms:
       - ansible_provisioned
       - consul_cluster
     networks:
-      - name: VSS-VLAN-102
+      - name: "{{ vm_network }}"
         type: dhcp
         device_type: vmxnet3
         # ip:

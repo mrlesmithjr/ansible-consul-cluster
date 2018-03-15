@@ -1,5 +1,6 @@
 ---
 keepalived_config: true
+
 keepalived_router_info:
   - name: vrrp_1
     check_script:
