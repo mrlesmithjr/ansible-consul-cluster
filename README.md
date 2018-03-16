@@ -1,25 +1,36 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [ansible-consul-cluster](#ansible-consul-cluster)
-  - [Assumptions](#assumptions)
-  - [Requirements](#requirements)
-  - [Usage](#usage)
-    - [Spinning Up VMs](#spinning-up-vms)
-      - [Updating Variables](#updating-variables)
-      - [Spinning Up and Provisioning](#spinning-up-and-provisioning)
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+-   [ansible-consul-cluster](#ansible-consul-cluster)
+    -   [Assumptions](#assumptions)
+    -   [Requirements](#requirements)
+    -   [Usage](#usage)
+        -   [Spinning Up VMs](#spinning-up-vms)
+            -   [Updating Variables](#updating-variables)
+            -   [Spinning Up and Provisioning](#spinning-up-and-provisioning)
+    -   [License](#license)
+    -   [Author Information](#author-information)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # ansible-consul-cluster
 
+The purpose of this repo is to provision out a 3-node Consul cluster. The
+inspiration behind this repo was a ready to roll Consul backend for Terraform.
+
 ## Assumptions
 
 The following list of assumptions are made but may be adjusted as neccessary.
 
-1.  Ubuntu (preferred) VM template available in vCenter.
-2.  DHCP is available to assign IP addresses to VMs when they spin up.
+1.  Functional vSphere environment including vCenter.
+2.  Ubuntu (preferred) VM template available in vCenter.
+3.  DHCP is available to assign IP addresses to VMs when they spin up.
+
+> NOTE: If you need an easy way to provision vSphere templates checkout my repo
+> [Packer-For-vSphere-and-More](https://github.com/mrlesmithjr/Packer-For-vSphere-and-More).
 
 ## Requirements
 
@@ -51,7 +62,8 @@ vcenter_username: administrator@vsphere.local
 
 #### Updating Variables
 
-You will first need to spin up 3 VMs for the Consul cluster.
+You will first need to spin up 3 VMs for the Consul cluster. These VMs are to
+be provisioned in a vSphere environment.
 
 Modify the following to meet your environment requirements:
 
@@ -80,6 +92,8 @@ consul_encryption_key: OJVXXkKdwifyqc9BrDe1VQ==
 
 To spin up the VMs:
 
+[provision_vms.yml](provision_vms.yml):
+
 ```bash
 ansible-playbook provisioned_vms.yml
 ```
@@ -89,6 +103,20 @@ Ansible inventory.
 
 To provision the VMs:
 
+[playbook.yml](playbook.yml):
+
 ```bash
 ansible-playbook -i hosts.inv playbook.yml
 ```
+
+## License
+
+MIT
+
+## Author Information
+
+Larry Smith Jr.
+
+-   [EverythingShouldBeVirtual](http://everythingshouldbevirtual.com)
+-   [@mrlesmithjr](https://www.twitter.com/mrlesmithjr)
+-   <mailto:mrlesmithjr@gmail.com>
